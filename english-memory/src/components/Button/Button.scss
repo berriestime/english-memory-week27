@@ -1,0 +1,16 @@
+@import './../../assets/styles/constants.scss';
+
+.button {
+    font-family : 'Roboto Regular';
+    background-color: $white-background;
+    border-radius: 1px;
+    border: none;
+    box-shadow: 0px 0px 2px 2px rgb(208, 208, 208);
+    padding: 3px;
+    margin: 5px;
+}
+
+.button:hover {
+  background-color: rgb(232, 231, 250);
+  transition: 0.5s;
+}

@@ -1,0 +1,22 @@
+.newItem {
+    display: flex;
+    background-color: rgb(224, 191, 245);
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    font-family : 'Roboto Regular';
+    border: none;
+    border-radius: 1px;
+    box-shadow: 0px 0px 2px 2px rgb(208, 208, 208);
+    height: 2em;
+    width: 2em;
+    padding: 3px;
+    margin: 5px;
+}
+
+.btn:hover {
+  background-color: rgb(232, 231, 250);
+  transition: 0.5s;
+}
