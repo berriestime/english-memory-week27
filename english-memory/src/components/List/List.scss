@@ -6,31 +6,19 @@
     padding: 10px;
     font-family: 'Roboto Medium';
     border: 1px solid black;
+    border-bottom: none;
 }
 
-.gridContainer {
+.tableRowH {
     display: grid;
-    grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 5% 1fr 1fr 1fr 1fr 15%;
     text-align: center;
-}
-
-.header {
     background-color: rgb(228, 200, 245);
-    text-align: center;
-    padding: 10px;
-    border: 1px solid $gray-liner;
 }
 
-.tableCell {
-    text-align: center;
-    padding: 1px;
-    border: 1px solid $gray-liner;
-}
-
-.item:nth-child(even) {
-    background-color: rgb(232, 231, 250);
-}
-
-.tableRow {
-    
+.tableCellH {
+    padding: 5px;
+    background-color: rgb(224, 191, 245);
+    border: 1px solid black;
+    border-right: none;
 }

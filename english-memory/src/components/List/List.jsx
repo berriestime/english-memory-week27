@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './List.scss';
-import Button from '../Button/Button';
+import ListItem from '../ListItem/ListItem';
 
 function List() {
   const arr = [
@@ -65,27 +65,25 @@ function List() {
   return (
     <div>
       <div className={styles.title}>Список всех существующих слов:</div>
-      <div className={styles.gridContainer}>
-        <div className={styles.header}>Номер</div>
-        <div className={styles.header}>Название</div>
-        <div className={styles.header}>Транскрипция</div>
-        <div className={styles.header}>Перевод</div>
-        <div className={styles.header}>Тема</div>
-        <div className={styles.header}>Другое</div>
-
+      <div>
+        <div className={styles.tableRowH}>
+          <div className={styles.tableCellH}>Номер</div>
+          <div className={styles.tableCellH}>Название</div>
+          <div className={styles.tableCellH}>Транскрипция</div>
+          <div className={styles.tableCellH}>Перевод</div>
+          <div className={styles.tableCellH}>Тема</div>
+          <div className={styles.tableCellH}></div>
+        </div>
         {arr.map(item => (
-          <React.Fragment className={styles.tableRow} key={item.id}>
-            <div className={styles.item}>{item.id}</div>
-            <div className={styles.item}>{item.english}</div>
-            <div className={styles.item}>{item.transcription}</div>
-            <div className={styles.item}>{item.russian}</div>
-            <div className={styles.item}>{item.tags}</div>
-            <div className={styles.item}>
-              <Button name="Сохранить"></Button>
-              <Button name="Изменить"></Button>
-              <Button name="Удалить"></Button>
-            </div>
-          </React.Fragment>
+          <div key={item.id}>
+            <ListItem
+              id={item.id}
+              english={item.english}
+              transcription={item.transcription}
+              russian={item.russian}
+              tags={item.tags}
+            />
+          </div>
         ))}
       </div>
     </div>

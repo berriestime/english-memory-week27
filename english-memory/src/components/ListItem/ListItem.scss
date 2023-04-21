@@ -1,0 +1,37 @@
+@import './../../assets/styles/constants.scss';
+
+.tableRowT {
+    display: grid;
+    grid-template-columns: 5% 1fr 1fr 1fr 1fr 15%;
+}
+
+.tableRowT:hover {
+      outline: dotted rgb(146, 194, 221);
+}
+
+.tableCellT {
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid $gray-liner;
+    display: flex;
+    justify-content: center;
+}
+
+.tableRowT:nth-child(even) *{
+    background-color: rgb(232, 231, 250);
+}
+
+.btn {
+    font-family : 'Roboto Regular';
+    background-color: $white-background;
+    border-radius: 1px;
+    border: none;
+    box-shadow: 0px 0px 2px 2px rgb(208, 208, 208);
+    padding: 3px;
+    margin: 5px;
+}
+
+.btn:hover {
+  background-color: rgb(146, 194, 221);
+  transition: 0.5s;
+}
