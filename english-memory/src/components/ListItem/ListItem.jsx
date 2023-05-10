@@ -2,62 +2,104 @@ import React, { useState } from 'react';
 import styles from './ListItem.scss';
 
 function ListItem(props) {
-  const [title, setTitle] = useState('Изменить');
+  const [isEditing, setIsEditing] = useState(false);
+  const [englishWord, setEnglishWord] = useState(props.english);
+  const [transcription, setTranscription] = useState(props.transcription);
+  const [russian, setRussian] = useState(props.russian);
+  const [tag, setTag] = useState(props.tags);
 
-  function handleClick() {
-    if (title === 'Изменить') {
-      setTitle('Сохранить');
-    } else {
-      setTitle('Изменить');
-    }
+  function handleEdit() {
+    setIsEditing(true);
   }
 
-  //   {title === 'Изменить' ? (
-  //     <span>{props.russian}</span>
-  //   ) : (
-  //     <input type="text" value={value} onChange={handleChange} />
-  //   )}
+  function handleSave() {
+    setIsEditing(false);
+  }
+
+  function handleRevert() {
+    setEnglishWord(props.english);
+    setTranscription(props.transcription);
+    setRussian(props.russian);
+    setTag(props.tags);
+    setIsEditing(!isEditing);
+  }
+
+  const handleNameChange = e => {
+    setEnglishWord(e.target.value);
+  };
+
+  const handleTranscriptionChange = e => {
+    setTranscription(e.target.value);
+  };
+
+  const handleRussianChange = e => {
+    setRussian(e.target.value);
+  };
+
+  const handleTagChange = e => {
+    setTag(e.target.value);
+  };
 
   return (
     <div className={styles.tableRowT} key={props.id}>
       <div className={styles.tableCellT}>{props.id}</div>
-      {title === 'Изменить' ? (
-        <div className={styles.tableCellT}>{props.english}</div>
-      ) : (
+      {isEditing ? (
         <input
           type="text"
-          value={props.english}
+          value={englishWord}
           className={styles.tableCellT}
+          onChange={handleNameChange}
         />
-      )}
-      {title === 'Изменить' ? (
-        <div className={styles.tableCellT}>{props.transcription}</div>
       ) : (
+        <div className={styles.tableCellT}>{englishWord}</div>
+      )}
+      {isEditing ? (
         <input
           type="text"
-          value={props.transcription}
+          value={transcription}
           className={styles.tableCellT}
+          onChange={handleTranscriptionChange}
         />
-      )}
-      {title === 'Изменить' ? (
-        <div className={styles.tableCellT}>{props.russian}</div>
       ) : (
+        <div className={styles.tableCellT}>{transcription}</div>
+      )}
+      {isEditing ? (
         <input
           type="text"
-          value={props.russian}
+          value={russian}
           className={styles.tableCellT}
+          onChange={handleRussianChange}
         />
-      )}
-      {title === 'Изменить' ? (
-        <div className={styles.tableCellT}>{props.tags}</div>
       ) : (
-        <input type="text" value={props.tags} className={styles.tableCellT} />
+        <div className={styles.tableCellT}>{russian}</div>
+      )}
+      {isEditing ? (
+        <input
+          type="text"
+          value={tag}
+          className={styles.tableCellT}
+          onChange={handleTagChange}
+        />
+      ) : (
+        <div className={styles.tableCellT}>{tag}</div>
       )}
       <div className={styles.tableCellT}>
-        <button onClick={handleClick} className={styles.btn}>
-          {title}
-        </button>
-        <button className={styles.btn}>Удалить</button>
+        {isEditing ? (
+          <button className={styles.btn} onClick={handleSave}>
+            Сохранить
+          </button>
+        ) : (
+          <button className={styles.btn} onClick={handleEdit}>
+            Изменить
+          </button>
+        )}
+        {isEditing ? (
+          <button className={styles.btn} onClick={handleRevert}>
+            Отменить изменения
+          </button>
+        ) : (
+          <button className={styles.btn}>Удалить</button>
+        )}
       </div>
     </div>
   );
